@@ -1,0 +1,21 @@
+from app import db, User, bcrypt
+db.create_all()
+hashed_password = bcrypt.generate_password_hash("adminpassword").decode('utf-8')
+admin = User(username="admin", password=hashed_password, is_admin=True)
+db.session.add(admin)
+db.session.commit()
+
+# [LIST PROGRAM 2 CODE BELOW]
+
+Admin_name_list = ['Jaylon', 'Destiny', 'John', 'Kaleb']
+print(Admin_name_list) # prints the names on the list
+
+"""
+Admin_name_list = ['Jaylon', 'Destiny', 'John', 'Donna', 'Kaleb']
+print(Admin_name_list) # prints the names on the list
+for x in range(0, len(Admin_name_list) - 1):
+    if Admin_name_list[x]=="Donna": # finds the name of 'Donna' in the list
+        print("Found Donna at location:",x)
+        del Admin_name_list[x]
+print(Admin_name_list)
+"""

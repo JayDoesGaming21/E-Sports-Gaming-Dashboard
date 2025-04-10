@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Tournament</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Manage Tournament</h1>
+
+    <h2>Add Tournament</h2>
+    <form method="POST">
+        <input type="hidden" name="action" value="add">
+        <label>Headset:</label> 
+        <input type="text" name="headset" required>
+
+        <label>Left Controller:</label> 
+        <input type="text" name="left_controller" required>
+
+        <label>Right Controller:</label> 
+        <input type="text" name="right_controller" required>
+
+        <label>Charging Cable:</label> 
+        <input type="text" name="charging_cable" required>
+
+        <button type="submit">Add Tournament</button>
+    </form>
+
+    <h2>Update Tournament</h2>
+    <form method="POST">
+        <input type="hidden" name="action" value="update">
+        
+        <label>Select Tournament:</label>
+        <select name="tournament_id">
+            {% for item in tournament %}
+                <option value="{{ item.id }}">
+                    Headset: {{ item.headset }}, Controllers: {{ item.left_controller }}/{{ item.right_controller }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <label>Headset:</label> 
+        <input type="text" name="headset">
+
+        <label>Left Controller:</label> 
+        <input type="text" name="left_controller">
+
+        <label>Right Controller:</label> 
+        <input type="text" name="right_controller">
+
+        <label>Charging Cable:</label> 
+        <input type="text" name="charging_cable">
+
+        <button type="submit">Update Tournament</button>
+    </form>
+
+    <h2>Delete Tournament</h2>
+    <form method="POST">
+        <input type="hidden" name="action" value="delete">
+
+        <label>Select Tournament to Delete:</label>
+        <select name="tournament_id">
+            {% for item in tournament %}
+                <option value="{{ item.id }}">
+                    Headset: {{ item.headset }}, Controllers: {{ item.left_controller }}/{{ item.right_controller }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <button type="submit" style="background-color: red;">Delete Tournament</button>
+    </form>
+
+    <br><br>
+    <a href="{{ url_for('index') }}">Back to Home</a>
+</body>
+</html>

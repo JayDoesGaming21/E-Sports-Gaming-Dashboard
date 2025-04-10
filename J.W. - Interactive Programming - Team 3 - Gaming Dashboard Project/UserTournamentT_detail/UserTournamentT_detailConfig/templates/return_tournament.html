@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Return Tournament</title>
+</head>
+<body>
+    <h1>Return Tournament</h1>
+    <form method="POST">
+        <label for="t_detail">Select T_detail:</label>
+        <select name="t_detail">
+            {% for t_detail in t_details %}
+                <option value="{{ t_detail.id }}">T_detail ID: {{ t_detail.id }} (User ID: {{ t_detail.user_id }})</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Return</button>
+    </form>
+
+    <a href="{{ url_for('index') }}">Back</a>
+</body>
+</html>

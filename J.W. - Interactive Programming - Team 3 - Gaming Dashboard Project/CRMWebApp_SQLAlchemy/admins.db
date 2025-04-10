@@ -1,0 +1,39 @@
+import sqlite3
+
+# Connect to the SQLite database (or create it if it doesn't exist)
+connection = sqlite3.connect('admins.db')
+
+# Create a cursor object to execute SQL commands
+cursor = connection.cursor()
+
+# Create the administrators table
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS administrators (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT NOT NULL UNIQUE,
+    password TEXT NOT NULL,
+    email TEXT NOT NULL UNIQUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)
+''')
+
+# Commit the changes and close the connection
+connection.commit()
+connection.close()
+
+print("Administrator database and table created successfully.")
+
+SQLite format 3(
+id INTEGER NOT NULL, {tableadminadmin} CREATE TABLE admin
+	first_name VARCHAR(80) NOT NULL, 
+	last_name VARCHAR(80) NOT NULL, 
+	address_line1 VARCHAR(255) NOT NULL, 
+	address_line2 VARCHAR(255), 
+	city VARCHAR(100) NOT NULL, 
+	state VARCHAR(2) NOT NULL, 
+	zipcode VARCHAR(10) NOT NULL, 
+	mobile VARCHAR(15) NOT NULL, 
+	email VARCHAR(120) NOT NULL, 
+	PRIMARY KEY (id), 
+	UNIQUE (email)
+)/Oindexsqlite_autoindex_admin_1admin

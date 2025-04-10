@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Users</h2>
+<a href="{{ url_for('add_user') }}" class="btn btn-primary">Add User</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.first_name }} {{ user.last_name }}</td>
+            <td>{{ user.email }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h2>Tournaments</h2>
+<a href="{{ url_for('add_tournament') }}" class="btn btn-success">Add Tournament</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Available</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in tournament %}
+        <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ 'Yes' if item.available else 'No' }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h2>T_details</h2>
+<a href="{{ url_for('define_tournament') }}" class="btn btn-warning">Define Tournament</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Tournament</th>
+            <th>Return Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for t_detail in t_details %}
+        <tr>
+            <td>{{ t_detail.user.first_name }} {{ t_detail.user.last_name }}</td>
+            <td>{{ t_detail.tournament.name }}</td>
+            <td>{{ t_detail.return_date.strftime('%Y-%m-%d') }}</td>
+            <td><a href="{{ url_for('return_tournament', t_detail_id=t_detail.id) }}" class="btn btn-danger">Return</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
