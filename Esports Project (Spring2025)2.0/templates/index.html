@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tournament Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Tournament</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('register') }}">Register</a></li>
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+                <li><a href="{{ url_for('participant') }}">Participants</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section>
+            <h2>About the Tournament</h2>
+            <p>Join the ultimate Belhaven competition and showcase your skills!</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Belhaven ESports Tournament</p>
+    </footer>
+</body>
+</html>
